@@ -15,6 +15,7 @@ export default function RootLayout({
     <html lang="es" {...mantineHtmlProps}>
       <head>
         <ColorSchemeScript />
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
         <MantineProvider>
