@@ -1,7 +1,6 @@
 'use client';
 
 import '@/components/bannerBg.css';
-import BackgroundCanvas from '@/components/BackgroundCanvas';
 import { Container, Title, Text, Button, Stack, Image, Anchor, Box } from '@mantine/core';
 
 export default function PresentationPage() {
@@ -17,7 +16,7 @@ export default function PresentationPage() {
           <Title order={1}>Presentación de Marcelo Urra</Title>
         </Box>
       </Box>
-<BackgroundCanvas opacity={0.1} zIndex={-1}>
+
       {/* Contenido principal */}
       <Container size="xs" py="xl">
         <Stack align="center" gap="md">
@@ -44,7 +43,6 @@ export default function PresentationPage() {
           </Stack>
         </Stack>
       </Container>
-      </BackgroundCanvas>
     </>
   );
 }
