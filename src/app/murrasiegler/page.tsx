@@ -7,15 +7,17 @@ export default function PresentationPage() {
   return (
     <>
       {/* Banner animado */}
-      <Box className="animated-background">
-        <div className="wave"></div>
-        <div className="wave"></div>
-        <div className="wave"></div>
+<Box className="banner-wrapper">
+  <Box className="animated-background">
+    <div className="wave"></div>
+    <div className="wave"></div>
+    <div className="wave"></div>
 
-        <Box ta="center" c="white">
-          <Title order={1}>Presentación de Marcelo Urra</Title>
-        </Box>
-      </Box>
+    <Box ta="center" c="white" px="md">
+      <Title order={1}>Presentación de Marcelo Urra</Title>
+    </Box>
+  </Box>
+</Box>
 
       {/* Contenido principal */}
       <Container size="xs" py="xl">

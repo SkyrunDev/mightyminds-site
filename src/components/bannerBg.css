@@ -1,21 +1,42 @@
-/* src/components/bannerBg.css */
-.animated-background {
+/* Wrapper que crea el halo animado */
+.banner-wrapper {
+  --grad: linear-gradient(315deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
   position: relative;
-  width: 100%;
-  height: 200; /* Altura de pantalla completa */
-  overflow: hidden;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  border-radius: 12px;
+  /* deja un poco de aire para que el halo se vea */
+  max-width: 1200px;
+  margin: 24px auto;         /* centra y separa del borde del viewport */
+}
+
+.banner-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -10px;              /* sale hacia afuera (halo) */
+  background: var(--grad);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
-  background-attachment: fixed;
+  filter: blur(18px);        /* difuminado */
+  border-radius: inherit;
   z-index: 0;
+  pointer-events: none;
+}
+
+/* El banner real con olas */
+.animated-background {
+  position: relative;
+  z-index: 1;                /* queda sobre el halo */
+  width: 100%;
+  height: 70vh;              /* o 100vh si quieres pantalla completa */
+  overflow: hidden;          /* aquí sí, para recortar las olas */
+  border-radius: inherit;
+  background: var(--grad);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
   box-sizing: border-box;
 }
-
 @keyframes gradient {
   0% {
     background-position: 0% 0%;
