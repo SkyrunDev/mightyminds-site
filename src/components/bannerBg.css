@@ -28,7 +28,7 @@
   z-index: 1;                /* queda sobre el halo */
   width: 100%;
   min-height: 350px;
-  padding: 48px 8px 90px;            
+  padding: 8px 8px 90px;            
   overflow: hidden;          /* aquí sí, para recortar las olas */
   border-radius: inherit;
   background: var(--grad);
@@ -97,4 +97,17 @@
   100% {
     transform: translateX(1);
   }
+}
+
+
+.banner-fade {
+  position: relative;
+}
+.banner-fade::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 140px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #f5f7fa 92%);
 }
