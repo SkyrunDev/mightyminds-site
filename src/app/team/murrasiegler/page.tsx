@@ -104,7 +104,7 @@ const features = [
               <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
                 <Box style={{ display: "flex", justifyContent: "center" }}>
                   <Avatar
-                    src="/marcelo-urra.png"
+                    src="/marcelo-urra.webp"
                     alt="Foto de Marcelo Urra"
                     radius={80}
                     size={150}
