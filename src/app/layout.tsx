@@ -3,7 +3,7 @@ import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/c
 
 export const metadata = {
   title: 'MightyMinds',
-  description: 'Sitio creado con Next.js y Mantine',
+  description: 'Innovación que une ideas y precisión',
 };
 
 export default function RootLayout({
