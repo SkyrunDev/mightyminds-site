@@ -3,7 +3,7 @@
 import { Box, Container, Stack, Title, Text, Image, Group, Button } from '@mantine/core';
 import Link from 'next/link';
 
-export default function HomePage() {
+export default function TeamPage() {
   return (
     <Box
       component="main"

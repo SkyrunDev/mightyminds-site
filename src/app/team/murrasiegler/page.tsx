@@ -14,17 +14,45 @@ import {
   Grid,
   SimpleGrid,
   Divider,
-  Stack
+  Stack,
+  ActionIcon,
+  CopyButton,
+  Tooltip
 } from "@mantine/core";
 
 import "@mantine/core/styles.css";
 import "@mantine/carousel/styles.css";
-import { Carousel } from "@mantine/carousel";
 import { InfoContacto } from "@/components/murrasiegler/InfoContacto";
-import { DirectsAccess } from "@/components/murrasiegler/DirectsAccess";
+import { DirectsAccess } from "@/components/murrasiegler/DirectsAccess"; 
 import ProjectCarousel from "@/components/ProjectCarousel";
+import { IconBrandWhatsapp, IconCheck, IconCopy, IconMail, IconPhone } from "@tabler/icons-react";
 
-export default function PresentationPage() {
+export default function mUrraSieglerPage() {
+type FeatureCard = { title: string; text: string; img: string };
+
+const features = [
+  {
+    title: "Desarrollo de hardware",
+    text: "Diseño, desarrollo y prototipado de PCB a medida, desde la concepción hasta la validación.",
+    img: "/participaciones/pcb-page.webp",
+  },
+  {
+    title: "Firmware y arquitectura",
+    text: "Programación en C/C++ para STM32, diseño de arquitecturas eficientes, integración de protocolos de comunicación y optimización de sistemas embebidos.",
+    img: "/participaciones/firm-page.webp",
+  },
+  {
+    title: "Mentoría de prototipado",
+    text: "Acompañamiento en la ruta TRL1 a TRL6, con validaciones rápidas, optimización de recursos y pruebas en terreno relevante.",
+    img: "/participaciones/proto-page.webp",
+  },
+  {
+    title: "Asesoría en ERNC",
+    text: "Dimensionamiento y levantamiento de sistemas solares, estimación de generación, asesoría técnica y seguimiento para proyectos fotovoltaicos.",
+    img: "/participaciones/solar-page.webp",
+  },
+] satisfies FeatureCard[];
+
   return (
     <>
       {/* Skip link para accesibilidad */}
@@ -147,137 +175,193 @@ export default function PresentationPage() {
       <Container id="content" size={"95%"} py="xl">
         {/* Participaciones */}
         <section id="participaciones" aria-label="Participaciones">
-          <Title
-            order={2}
-            c="gray.0"
-            fw={800}
-            lh={1.1}
+      <Text c="gray.3" mt="xs">
+        Selección de trabajos y colaboraciones con foco en resultados medibles.
+      </Text>
+
+      {/* 2) Render en el grid */}
+      <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="md" mt="md">
+        {features.map(({ title, text, img }) => (
+          <Paper
+            key={title}
+            p="lg"
+            radius="md"
             style={{
-              textShadow: "0 2px 6px rgba(0,0,0,.35)",
               position: "relative",
-              display: "inline-block",
+              minHeight: 180,
+              backgroundImage: `url(${img})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundColor: "var(--mantine-color-dark-6)", // fallback
+              borderColor: "rgba(255,255,255,0.12)",
+              overflow: "hidden",
             }}
+            aria-label={title}
           >
-            Participaciones
-            <span
+            {/* overlay para contraste */}
+            <div
               style={{
                 position: "absolute",
-                left: 0,
-                bottom: -6,
-                width: "42%",
-                height: 3,
-                background: "#00bfa5",
-                borderRadius: 2,
-                opacity: 0.9,
+                inset: 0,
+                background:
+                  "linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.55) 70%)",
               }}
             />
-          </Title>
-          <Text c="gray.3" mt="xs">
-            Selección de apariciones, charlas y colaboraciones relevantes.
-          </Text>
-          <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="md">
-            <Paper p="md" radius="md" withBorder>
-              <Title order={4}>Charla: IoT en Minería</Title>
-              <Text c="gray.7" fz="sm" mt={4}>
-                Integración de sensores, telemetría y analítica en faenas.
+
+            {/* contenido por encima */}
+            <div style={{ position: "relative" }}>
+              <Title order={4} c="gray.0">
+                {title}
+              </Title>
+              <Text c="gray.1" fz="sm" mt={4}>
+                {text}
               </Text>
-            </Paper>
-            <Paper p="md" radius="md" withBorder>
-              <Title order={4}>Panel: Industria 4.0</Title>
-              <Text c="gray.7" fz="sm" mt={4}>
-                Automatización, IA y ciberseguridad en operaciones.
-              </Text>
-            </Paper>
-            <Paper p="md" radius="md" withBorder>
-              <Title order={4}>Mentoría: Prototipado</Title>
-              <Text c="gray.7" fz="sm" mt={4}>
-                De TRL1 a TRL6 con foco en MVPs robustos.
-              </Text>
-            </Paper>
-          </SimpleGrid>
+            </div>
+          </Paper>
+        ))}
+      </SimpleGrid>
         </section>
 
         <Divider my="xl" variant="dashed" />
 
-        {/* Shovel Smart Tooth */}
+{/* Shovel Smart Tooth */}
 <ProjectCarousel
   id="shovel"
   title="Shovel Smart Tooth"
   description="Trazabilidad y control de inchancables con microcontroladores y telemetría."
   items={[
-    { image: "/img/shovel-1.jpg", title: "Propuesta de solución", category: "minería" },
-    { image: "/shovel/pcb-shovel.jpg", title: "Desarrollo de Hardware", category: "hardware" },
-    { image: "/shovel/hard-shovel.jpg", title: "Fabricación de Hardware", category: "hardware" },
-    { image: "/shovel/coding.jpg", title: "Desarrollo de Firmware", category: "firmware" },
-    { image: "/img/shovel-4.jpg", title: "Avance TRL1 → TRL6", category: "validación" },
+    { image: "/shovel/test-shovel.webp", title: "Pruebas en terreno", category: "validación" },
+    { image: "/shovel/pcb-shovel.webp", title: "Desarrollo de Hardware", category: "hardware" },
+    { image: "/shovel/hard-shovel.webp", title: "Fabricación de Hardware", category: "hardware" },
+    { image: "/shovel/firm-shovel.webp", title: "Desarrollo de Firmware", category: "firmware" }
   ]}
 />
 
         <Divider my="xl" variant="dashed" />
 
+{/* Contacto */}
+<section id="contacto" aria-label="Contacto">
+  <Title
+    order={2}
+    c="gray.0"
+    fw={800}
+    lh={1.1}
+    style={{ textShadow: "0 2px 6px rgba(0,0,0,.35)", position: "relative", display: "inline-block" }}
+  >
+    Contacto
+    <span style={{
+      position: "absolute", left: 0, bottom: -6, width: "42%", height: 3,
+      background: "#00bfa5", borderRadius: 2, opacity: 0.9
+    }} />
+  </Title>
 
+  <Text c="gray.3" mt="xs">
+    ¿Tienes un proyecto o idea? Conversemos.
+  </Text>
 
-        {/* Contacto full */}
-        <section id="contacto" aria-label="Contacto">
-          <Title
-            order={2}
-            c="gray.0"
-            fw={800}
-            lh={1.1}
-            style={{
-              textShadow: "0 2px 6px rgba(0,0,0,.35)",
-              position: "relative",
-              display: "inline-block",
-            }}
-          >
-            Contacto
-            <span
-              style={{
-                position: "absolute",
-                left: 0,
-                bottom: -6,
-                width: "42%",
-                height: 3,
-                background: "#00bfa5",
-                borderRadius: 2,
-                opacity: 0.9,
-              }}
-            />
-          </Title>
-          <Text c="gray.3" mt="xs">
-            ¿Tienes un proyecto o idea? Conversemos.
-          </Text>
-              <Stack
-              align="center"
-              justify="space-around"
-              gap="xs"
-              >
-              <Grid columns={12} justify="center" align="center" w={'100%'}>
-                
-                <Grid.Col span={{xs: 2 ,md: 1}}>
-                  <Text c="white" mt={6}>Email:</Text>
-                </Grid.Col>
-                 <Grid.Col span={{xs: 10, md: 11}}>
-                    <Text c="white" mt={6}>
-                    <Anchor href="mailto:marcelo.urra.s@gmail.com" c="teal.2">marcelo.urra.s@gmail.com</Anchor>
-                  </Text>
-                </Grid.Col>
-                 </Grid>
-          
-              <Grid columns={12} justify="center" align="center" w={'100%'}>
+  <Paper
+    mt="md"
+    p={{ base: "md", sm: "lg" }}
+    radius="md"
+    withBorder
+    // Fondo sutil + blur, ancho contenido
+    bg="rgba(255,255,255,0.04)"
+    style={{
+      backdropFilter: "blur(6px)",
+      borderColor: "rgba(255,255,255,0.12)",
+      maxWidth: 680,
+      width: "100%",
+      marginInline: "auto",
+    }}
+  >
+    <Stack gap="md">
+      {/* Row: Email */}
+      <Group justify="space-between" wrap="nowrap" align="center">
+        <Group gap="sm" wrap="nowrap" align="center">
+          <ActionIcon variant="filled" color="teal" radius="md" size={34} aria-label="Email">
+            <IconMail size={18} />
+          </ActionIcon>
+          <div>
+            <Text c="gray.4" fz="xs" fw={700} tt="uppercase" lts={0.5}>
+              Email
+            </Text>
+            <Anchor href="mailto:marcelo.urra.s@gmail.com" c="teal.2" fw={600}>
+              marcelo.urra.s@gmail.com
+            </Anchor>
+          </div>
+        </Group>
 
-                <Grid.Col span={{xs: 2 ,md: 1}} content="center">
-                  <Text c="white">Tel:</Text>
-                </Grid.Col>
-                 <Grid.Col span={{xs: 10, md: 11}} content="center">
-                  <Text c="white">
-                    <Anchor href="tel:+56998053031" c="teal.2">+56 9 9805 3031</Anchor>
-                  </Text>
-                </Grid.Col>
+        <CopyButton value="marcelo.urra.s@gmail.com" timeout={1500}>
+          {({ copied, copy }) => (
+            <Tooltip label={copied ? "Copiado" : "Copiar"} withArrow>
+              <ActionIcon onClick={copy} variant="subtle" aria-label="Copiar email">
+                {copied ? <IconCheck size={18} /> : <IconCopy size={18} />}
+              </ActionIcon>
+            </Tooltip>
+          )}
+        </CopyButton>
+      </Group>
 
-                 </Grid>
-                 </Stack>
-        </section>
+      <Divider variant="dashed" opacity={0.35} />
+{/* Row: Teléfono */}
+<Group justify="space-between" wrap="nowrap" align="center">
+  <Group gap="sm" wrap="nowrap" align="center" style={{ flex: 1 }}>
+    <ActionIcon variant="filled" color="teal" radius="md" size={34} aria-label="Teléfono">
+      <IconPhone size={18} />
+    </ActionIcon>
+
+    <div style={{ flex: 1 }}>
+      <Text c="gray.4" fz="xs" fw={700} tt="uppercase" lts={0.5}>
+        Teléfono
+      </Text>
+      <Anchor href="tel:+56998053031" c="teal.2" fw={600}>
+        +56 9 9805 3031
+      </Anchor>
+    </div>
+  </Group>
+
+  {/* Acciones: SIEMPRE icono de copiar; WhatsApp solo en desktop */}
+  <Group gap="xs" wrap="nowrap">
+    <CopyButton value="+56998053031" timeout={1500}>
+      {({ copied, copy }) => (
+        <ActionIcon onClick={copy} variant="subtle" aria-label="Copiar teléfono">
+          {copied ? <IconCheck size={18} /> : <IconCopy size={18} />}
+        </ActionIcon>
+      )}
+    </CopyButton>
+
+    <Button
+      component="a"
+      href="https://wa.me/56998053031"
+      size="xs"
+      variant="default"
+      leftSection={<IconBrandWhatsapp size={16} />}
+      visibleFrom="sm"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      WhatsApp
+    </Button>
+  </Group>
+</Group>
+
+{/* Móvil: solo WhatsApp full width (el icono de copiar ya está arriba) */}
+<Button
+  component="a"
+  href="https://wa.me/56998053031"
+  size="sm"
+  variant="default"
+  leftSection={<IconBrandWhatsapp size={16} />}
+  fullWidth
+  hiddenFrom="sm"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  WhatsApp
+</Button>
+    </Stack>
+  </Paper>
+</section>
       </Container>
 
       {/* Footer simple */}
