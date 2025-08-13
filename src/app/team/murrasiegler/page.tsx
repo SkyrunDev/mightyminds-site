@@ -14,6 +14,7 @@ import {
   Grid,
   SimpleGrid,
   Divider,
+  Stack
 } from "@mantine/core";
 
 import "@mantine/core/styles.css";
@@ -21,7 +22,7 @@ import "@mantine/carousel/styles.css";
 import { Carousel } from "@mantine/carousel";
 import { InfoContacto } from "@/components/murrasiegler/InfoContacto";
 import { DirectsAccess } from "@/components/murrasiegler/DirectsAccess";
-import ProjectCarousel, { type SlideItem } from "@/components/ProjectCarousel";
+import ProjectCarousel from "@/components/ProjectCarousel";
 
 export default function PresentationPage() {
   return (
@@ -200,35 +201,21 @@ export default function PresentationPage() {
 
         {/* Shovel Smart Tooth */}
 <ProjectCarousel
-  id="shovel "
+  id="shovel"
   title="Shovel Smart Tooth"
   description="Trazabilidad y control de inchancables con microcontroladores y telemetría."
-  slides={[
-    { title: "Propuesta de solución", text: "…", image: "/img/shovel-1.jpg" },
-    { title: "Desarrollo de Hardware", text: "…", image: "/shovel/pcb-shovel.jpg" },
-    { title: "Desarrollo de firmware", text: "…", image: "/img/shovel-3.jpg" },
-    { title: "Avance TRL1 → TRL6", text: "…", image: "/img/shovel-4.jpg" },
+  items={[
+    { image: "/img/shovel-1.jpg", title: "Propuesta de solución", category: "minería" },
+    { image: "/shovel/pcb-shovel.jpg", title: "Desarrollo de Hardware", category: "hardware" },
+    { image: "/shovel/hard-shovel.jpg", title: "Fabricación de Hardware", category: "hardware" },
+    { image: "/shovel/coding.jpg", title: "Desarrollo de Firmware", category: "firmware" },
+    { image: "/img/shovel-4.jpg", title: "Avance TRL1 → TRL6", category: "validación" },
   ]}
 />
 
         <Divider my="xl" variant="dashed" />
 
-{/* Seguridad Perimetral */}
 
-<ProjectCarousel
-  id="segper"
-  title="Seguridad Perimetral"
-  description="Trazabilidad y control de perimetros de seguridad con microcontroladores y telemetría."
-  slides={[
-    { title: "Propuesta de solución", text: "…", image: "/img/shovel-1.jpg" },
-    { title: "Desarrollo de Hardware", text: "…", image: "/img/shovel-2.jpg" },
-    { title: "Desarrollo de firmware", text: "…", image: "/img/shovel-3.jpg" },
-    { title: "Avance TRL1 → TRL6", text: "…", image: "/img/shovel-4.jpg" },
-  ]}
-/>
-
-
-        <Divider my="xl" variant="dashed" />
 
         {/* Contacto full */}
         <section id="contacto" aria-label="Contacto">
@@ -260,7 +247,36 @@ export default function PresentationPage() {
           <Text c="gray.3" mt="xs">
             ¿Tienes un proyecto o idea? Conversemos.
           </Text>
-          <InfoContacto />
+              <Stack
+              align="center"
+              justify="space-around"
+              gap="xs"
+              >
+              <Grid columns={12} justify="center" align="center" w={'100%'}>
+                
+                <Grid.Col span={{xs: 2 ,md: 1}}>
+                  <Text c="white" mt={6}>Email:</Text>
+                </Grid.Col>
+                 <Grid.Col span={{xs: 10, md: 11}}>
+                    <Text c="white" mt={6}>
+                    <Anchor href="mailto:marcelo.urra.s@gmail.com" c="teal.2">marcelo.urra.s@gmail.com</Anchor>
+                  </Text>
+                </Grid.Col>
+                 </Grid>
+          
+              <Grid columns={12} justify="center" align="center" w={'100%'}>
+
+                <Grid.Col span={{xs: 2 ,md: 1}} content="center">
+                  <Text c="white">Tel:</Text>
+                </Grid.Col>
+                 <Grid.Col span={{xs: 10, md: 11}} content="center">
+                  <Text c="white">
+                    <Anchor href="tel:+56998053031" c="teal.2">+56 9 9805 3031</Anchor>
+                  </Text>
+                </Grid.Col>
+
+                 </Grid>
+                 </Stack>
         </section>
       </Container>
 
