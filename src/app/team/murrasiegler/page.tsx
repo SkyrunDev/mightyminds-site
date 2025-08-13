@@ -77,9 +77,6 @@ const features = [
               <Anchor href="#participaciones" c="gray.2" underline="never">
                 Participaciones
               </Anchor>
-              <Anchor href="#shovel" c="gray.2" underline="never">
-                Proyectos
-              </Anchor>
               <Anchor href="#contacto" c="gray.2" underline="never">
                 Contacto
               </Anchor>
@@ -175,9 +172,19 @@ const features = [
       <Container id="content" size={"95%"} py="xl">
         {/* Participaciones */}
         <section id="participaciones" aria-label="Participaciones">
-      <Text c="gray.3" mt="xs">
-        Selección de trabajos y colaboraciones con foco en resultados medibles.
-      </Text>
+  <Title
+    order={2}
+    c="gray.0"
+    fw={800}
+    lh={1.1}
+    style={{ textShadow: "0 2px 6px rgba(0,0,0,.35)", position: "relative", display: "inline-block" }}
+  >
+    Participaciones
+    <span style={{
+      position: "absolute", left: 0, bottom: -6, width: "42%", height: 3,
+      background: "#00bfa5", borderRadius: 2, opacity: 0.9
+    }} />
+  </Title>
 
       {/* 2) Render en el grid */}
       <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="md" mt="md">
