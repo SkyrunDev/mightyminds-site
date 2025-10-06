@@ -244,13 +244,29 @@ const features = [
     { image: "/shovel/data-cabina.webp", title: "Monitoreo en Tiempo Real en Terreno", category: "pilotaje" },
     { image: "/shovel/test-shovel.webp", title: "Pruebas en terreno", category: "validación" },
     { image: "/shovel/pcb-shovel.webp", title: "Desarrollo de Hardware", category: "hardware" },
-    { image: "/shovel/hard-shovel.webp", title: "Fabricación de Hardware", category: "hardware" },
-    { image: "/shovel/firm-shovel.webp", title: "Desarrollo de Firmware", category: "firmware" }
+    { image: "/shovel/hard-shovel.webp", title: "Fabricación de Hardware", category: "hardware" }
   ]}
 />
 
         <Divider my="xl" variant="dashed" />
 
+{/* Seguridad Perimetral*/}
+<ProjectCarousel
+  id="perim"
+  title="IoT para Seguridad Perimetral"
+  description="Sistema de monitoreo y alertas para seguridad perimetral basado en IoT y sensores."
+  items={[
+    { image: "/perim/perim-secure.webp", title: "IoT para Perímetros Seguros", category: "desarrollo" },
+    { image: "/perim/perim-terreno.webp", title: "Validación en Terreno", category: "validación" },
+    { image: "/perim/hw-desing.webp", title: "Desarrollo de Hardware y Firmware", category: "desarrollo" },
+    { image: "/perim/hw-model.webp", title: "Modelamiento y Diseño de Hardware ", category: "hardware" },
+    { image: "/perim/hw-fabric.webp", title: "Fabricación de Hardware", category: "hardware" }
+  ]}
+/>
+
+        <Divider my="xl" variant="dashed" />
+
+        
 {/* Contacto */}
 <section id="contacto" aria-label="Contacto">
   <Title

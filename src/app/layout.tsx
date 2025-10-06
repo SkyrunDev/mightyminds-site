@@ -3,7 +3,7 @@ import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/c
 
 export const metadata = {
   title: 'MightyMinds',
-  description: 'Innovación que une ideas y precisión',
+  description: 'Innovación que une ideas y creatividad para transformar el futuro.',
 };
 
 export default function RootLayout({
