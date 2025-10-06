@@ -237,6 +237,11 @@ const features = [
   title="Shovel Smart Tooth"
   description="Trazabilidad y control de inchancables con microcontroladores y telemetría."
   items={[
+    { image: "/shovel/foto-pala-escalado.webp", title: "Despliegue de Tecnología en Faena Minera", category: "pilotaje" },
+    { image: "/shovel/diente-instalado.webp", title: "Integración de Tecnología de Monitoreo en Componentes de Desgaste", category: "pilotaje" },
+    { image: "/shovel/work-diente.webp", title: "Validación de Tecnología en Terreno", category: "pilotaje" },
+    { image: "/shovel/tablero-instalado.webp", title: "Diseño e Instalación de Tableros IoT", category: "pilotaje" },
+    { image: "/shovel/data-cabina.webp", title: "Monitoreo en Tiempo Real en Terreno", category: "pilotaje" },
     { image: "/shovel/test-shovel.webp", title: "Pruebas en terreno", category: "validación" },
     { image: "/shovel/pcb-shovel.webp", title: "Desarrollo de Hardware", category: "hardware" },
     { image: "/shovel/hard-shovel.webp", title: "Fabricación de Hardware", category: "hardware" },
